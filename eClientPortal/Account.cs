@@ -5,7 +5,7 @@ using System.Text;
 
 namespace eClientPortal
 {
-    class Account
+    public class Account
     {
     }
 }
