@@ -1,9 +1,9 @@
 <sgifs>
-	<dealerportal>
-		<baseURL>http://www.sgifs.com/DealerPortal/</baseURL>
-		<testUserName>selenium</testUserName>
+	<eclientportal>
+		<baseURL>http://10.1.13.120/eclientPortal/</baseURL>
+		<testUserName>alextest2</testUserName>
 		<testPassWord>Testing1</testPassWord>
 		<auxUserName>selenium2</auxUserName>
 		<auxEmailAddr>selenium1@srv0.com</auxEmailAddr>
-	</dealerportal>
+	</eclientportal>
 </sgifs>
