@@ -8,7 +8,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using System.IO;
 
-namespace DealerPortalTests
+namespace DealerPortal
 {
     [TestFixture]
     public class Login
@@ -18,11 +18,7 @@ namespace DealerPortalTests
         private bool acceptNextAlert = true;
         private string testResult;
         private string testResultReason;
-        private static string baseURL = DealerPortal.Config.startURL;
-        private static string testUserName = DealerPortal.Config.testUserName;
-        private static string testPassWord = DealerPortal.Config.testPassWord;
-        private static string auxUserName = DealerPortal.Config.auxUserName;
-        private static string auxEmailAddr = DealerPortal.Config.auxEmailAddr;
+        
 
         [SetUp]
         public void SetupTest()
@@ -47,7 +43,7 @@ namespace DealerPortalTests
             }
             Assert.AreEqual("", verificationErrors.ToString());
 
-            if (testResult == "I") // it's either gonna be "I" or otherwise pass. fails are dealt with in their exceptions.
+            if (testResult == "I") 
             {
                 Console.WriteLine("TEST INCOMPLETE.  Reason: " + testResultReason + "\r\n");
             }
@@ -57,47 +53,54 @@ namespace DealerPortalTests
         [Test]
         public void LoginLogout()
         {
-            driver.Navigate().GoToUrl(baseURL + "Login.aspx");
-            driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).Clear();
-            driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).SendKeys(testUserName);
-            driver.FindElement(By.XPath("//input[contains(@name,'Password')]")).Clear();
-            driver.FindElement(By.XPath("//input[contains(@name,'Password')]")).SendKeys(testPassWord);
-            driver.FindElement(By.XPath("//input[contains(@id,'BtnSubmit')]")).Click();
-
-            for (int second = 0; ; second++)
-            {
-                if (second >= 60)
-                {
-                    testResult = "I";
-                    testResultReason = "timeout waiting on login to return";
-                    Assert.Fail(testResultReason);               
-                }
-                try
-                {
-                    if (IsElementPresent(By.Id("ctlRightNavbar_ctlUserName"))) break;
-                }
-                catch (Exception)
-                { }
-                Thread.Sleep(1000);
-            }
-
-            
             try
             {
-                Assert.IsTrue(Regex.IsMatch(driver.FindElement(By.CssSelector("BODY")).Text, testUserName));
+                driver.Navigate().GoToUrl(Config.startURL + "Login.aspx");
+                driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).Clear();
+                driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).SendKeys(Config.testUserName);
+                driver.FindElement(By.XPath("//input[contains(@name,'Password')]")).Clear();
+                driver.FindElement(By.XPath("//input[contains(@name,'Password')]")).SendKeys(Config.testPassWord);
+                driver.FindElement(By.XPath("//input[contains(@id,'BtnSubmit')]")).Click();
+
+                for (int second = 0; ; second++)
+                {
+                    if (second >= 60)
+                    {
+                        testResult = "I";
+                        testResultReason = "timeout waiting on login to return";
+                        Assert.Fail(testResultReason);
+                    }
+                    try
+                    {
+                        if (IsElementPresent(By.Id("ctlRightNavbar_ctlUserName"))) break;
+                    }
+                    catch (Exception)
+                    { }
+                    Thread.Sleep(1000);
+                }
+
+
+                try
+                {
+                    Assert.IsTrue(Regex.IsMatch(driver.FindElement(By.CssSelector("BODY")).Text, Config.testUserName));
+                }
+                catch (AssertionException e)
+                {
+                    verificationErrors.Append(e.Message);
+                }
+
+                driver.FindElement(By.XPath("//a[contains(text(),'Logout')]")).Click();  // Put the seat back down
             }
-            catch (AssertionException e)
+            catch (Exception)
             {
-                verificationErrors.Append(e.Message);
+
             }
-            
-            driver.FindElement(By.XPath("//a[contains(text(),'Logout')]")).Click();  // Put the seat back down
         }
  
         [Test]
         public void ForgotPassword()
         {
-            driver.Navigate().GoToUrl(baseURL + "Login.aspx?ReturnUrl=%2fDealerPortal%2f");
+            driver.Navigate().GoToUrl(Config.startURL + "Login.aspx?ReturnUrl=%2fDealerPortal%2f");
             driver.FindElement(By.Id("ContentPlaceHolder1_ctrlLogin_Login1_resetPassword")).Click();
             for (int second = 0; ; second++)
             {
@@ -112,7 +115,7 @@ namespace DealerPortalTests
             }
 
             driver.FindElement(By.Id("ContentPlaceHolder1_ResetPassword1_tbxEmail")).Clear();
-            driver.FindElement(By.Id("ContentPlaceHolder1_ResetPassword1_tbxEmail")).SendKeys(auxEmailAddr);
+            driver.FindElement(By.Id("ContentPlaceHolder1_ResetPassword1_tbxEmail")).SendKeys(Config.auxEmailAddr);
             driver.FindElement(By.Id("ContentPlaceHolder1_ResetPassword1_btnSearch")).Click();
 
             for (int second = 0; ; second++)

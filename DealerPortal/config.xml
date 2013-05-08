@@ -1,6 +1,6 @@
 <sgifs>
 	<dealerportal>
-		<baseURL>http://10.1.13.120/DealerPortal/</baseURL>
+		<Config.startURL>http://10.1.13.120/DealerPortal/</Config.startURL>
 		<testUserName>selenium</testUserName>
 		<testPassWord>Testing1</testPassWord>
 		<auxUserName>selenium2</auxUserName>

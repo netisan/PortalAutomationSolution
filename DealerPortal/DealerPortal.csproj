@@ -35,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NMock2">
-      <HintPath>..\..\..\..\..\..\..\selenium.net\net40\NMock2.dll</HintPath>
+      <HintPath>X:\WebTeam\Software\selenium\src\Service Group Selenium\SGIFS.com_Automation\bin\Release\NMock2.dll</HintPath>
     </Reference>
     <Reference Include="nunit.core">
-      <HintPath>..\..\..\..\..\..\..\selenium.net\net40\nunit.core.dll</HintPath>
+      <HintPath>X:\WebTeam\Software\selenium\src\Service Group Selenium\SGIFS.com_Automation\bin\Release\nunit.core.dll</HintPath>
     </Reference>
     <Reference Include="nunit.core.interfaces, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -49,7 +49,7 @@
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\NUnit 2.6.2\bin\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Selenium.WebDriverBackedSelenium">
-      <HintPath>..\..\..\..\..\..\..\selenium.net\net35\Selenium.WebDriverBackedSelenium.dll</HintPath>
+      <HintPath>X:\WebTeam\Software\selenium\src\Service Group Selenium\SGIFS.com_Automation\bin\Release\Selenium.WebDriverBackedSelenium.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -59,16 +59,16 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="ThoughtWorks.Selenium.Core">
-      <HintPath>..\..\..\..\..\..\..\selenium.net\net40\ThoughtWorks.Selenium.Core.dll</HintPath>
+      <HintPath>X:\WebTeam\Software\selenium\src\Service Group Selenium\SGIFS.com_Automation\bin\Release\ThoughtWorks.Selenium.Core.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver">
-      <HintPath>..\..\..\..\..\..\..\selenium.net\net35\WebDriver.dll</HintPath>
+      <HintPath>X:\WebTeam\Software\selenium\src\Service Group Selenium\SGIFS.com_Automation\bin\Release\WebDriver.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver.Common.Tests">
-      <HintPath>..\..\..\..\..\..\..\selenium.net\net40\WebDriver.Common.Tests.dll</HintPath>
+      <HintPath>X:\WebTeam\Software\selenium\src\Service Group Selenium\SGIFS.com_Automation\bin\Release\WebDriver.Common.Tests.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver.Support">
-      <HintPath>..\..\..\..\..\..\..\selenium.net\net35\WebDriver.Support.dll</HintPath>
+      <HintPath>X:\WebTeam\Software\selenium\src\Service Group Selenium\SGIFS.com_Automation\bin\Release\WebDriver.Support.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

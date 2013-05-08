@@ -18,10 +18,7 @@ namespace DealerPortal
         private bool acceptNextAlert = true;
         private string testResult;
         private string testResultReason;
-        private static string baseURL = DealerPortal.Config.startURL;
-        private static string testUserName = DealerPortal.Config.testUserName;
-        private static string testPassWord = DealerPortal.Config.testPassWord;
-        private static string auxUserName = DealerPortal.Config.auxUserName;
+        
 
         [SetUp]
         public void SetupTest()
@@ -59,7 +56,7 @@ namespace DealerPortal
         public void ViewUsers()
         {  
             // Go to dealer portal and login as test user
-            driver.Navigate().GoToUrl(baseURL + "Login.aspx");
+            driver.Navigate().GoToUrl(Config.startURL + "Login.aspx");
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).Clear();
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).SendKeys(DealerPortal.Config.testUserName);        
             driver.FindElement(By.XPath("//input[contains(@name,'Password')]")).Clear();
@@ -125,7 +122,7 @@ namespace DealerPortal
         [Test]
         public void EditAccount()
         {   // Go to dealer portal and login as test user
-            driver.Navigate().GoToUrl(baseURL + "Login.aspx");
+            driver.Navigate().GoToUrl(Config.startURL + "Login.aspx");
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).Clear();
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).SendKeys(DealerPortal.Config.testUserName);
             driver.FindElement(By.XPath("//input[contains(@name,'Password')]")).Clear();
@@ -335,7 +332,7 @@ namespace DealerPortal
         [Test]
         public void ActivateDeactivate()
         {
-            driver.Navigate().GoToUrl(baseURL + "Login.aspx");
+            driver.Navigate().GoToUrl(Config.startURL + "Login.aspx");
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).Clear();
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).SendKeys(DealerPortal.Config.testUserName);
             driver.FindElement(By.XPath("//input[contains(@name,'Password')]")).Clear();
@@ -449,7 +446,7 @@ namespace DealerPortal
         {   
             // Go to dealer portal and login as test user
 
-            driver.Navigate().GoToUrl(baseURL + "Login.aspx");
+            driver.Navigate().GoToUrl(Config.startURL + "Login.aspx");
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).Clear();
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).SendKeys(DealerPortal.Config.testUserName);
             driver.FindElement(By.XPath("//input[contains(@name,'Password')]")).Clear();
@@ -595,7 +592,7 @@ namespace DealerPortal
 
                     driver.FindElement(By.CssSelector("div.closeBox")).Click();
                     
-                    driver.Navigate().GoToUrl(baseURL + "WebModules/AdminModules/manageUsers.aspx");
+                    driver.Navigate().GoToUrl(Config.startURL + "WebModules/AdminModules/manageUsers.aspx");
 
                     for (int second = 0; ; second++)
                     {
@@ -650,7 +647,7 @@ namespace DealerPortal
         {
             // Go to dealer portal and login as test user
 
-            driver.Navigate().GoToUrl(baseURL + "Login.aspx");
+            driver.Navigate().GoToUrl(Config.startURL + "Login.aspx");
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).Clear();
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).SendKeys(DealerPortal.Config.testUserName);
             driver.FindElement(By.XPath("//input[contains(@name,'Password')]")).Clear();
@@ -776,7 +773,7 @@ namespace DealerPortal
 
             driver.FindElement(By.CssSelector("div.closeBox")).Click();
 
-            driver.Navigate().GoToUrl(baseURL + "WebModules/AdminModules/manageUsers.aspx");
+            driver.Navigate().GoToUrl(Config.startURL + "WebModules/AdminModules/manageUsers.aspx");
 
             for (int second = 0; ; second++)
             {

@@ -17,11 +17,7 @@ namespace DealerPortal
         private StringBuilder verificationErrors;
         private bool acceptNextAlert = true;
         private string testResult;
-        private string testResultReason;
-        private static string baseURL = DealerPortal.Config.startURL;
-        private static string testUserName = DealerPortal.Config.testUserName;
-        private static string testPassWord = DealerPortal.Config.testPassWord;
-        private static string auxUserName = DealerPortal.Config.auxUserName;
+        private string testResultReason; 
 
         [SetUp]
         public void SetupTest()
@@ -56,7 +52,7 @@ namespace DealerPortal
         [Test]
         public void ChangeSelectedProduct()
         {
-            driver.Navigate().GoToUrl(baseURL + "Login.aspx");
+            driver.Navigate().GoToUrl(Config.startURL + "Login.aspx");
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).Clear();
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).SendKeys(DealerPortal.Config.testUserName);
             driver.FindElement(By.XPath("//input[contains(@name,'Password')]")).Clear();
@@ -304,7 +300,7 @@ namespace DealerPortal
         public void ChangePassword()
         {
             // Go to dealer portal and login as test user
-            driver.Navigate().GoToUrl(baseURL + "Login.aspx");
+            driver.Navigate().GoToUrl(Config.startURL + "Login.aspx");
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).Clear();
             driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).SendKeys(DealerPortal.Config.testUserName);
             driver.FindElement(By.XPath("//input[contains(@name,'Password')]")).Clear();
@@ -366,14 +362,12 @@ namespace DealerPortal
         [Test]
         public void MyInfo()
         {
-            driver.Navigate().GoToUrl(baseURL + "Login.aspx");
+            driver.Navigate().GoToUrl(Config.startURL + "Login.aspx");
             driver.FindElement(By.Id("ContentPlaceHolder1_ctrlLogin_Login1_UserName")).Clear();
             driver.FindElement(By.Id("ContentPlaceHolder1_ctrlLogin_Login1_UserName")).SendKeys(DealerPortal.Config.testUserName);
             driver.FindElement(By.Id("ContentPlaceHolder1_ctrlLogin_Login1_Password")).Clear();
             driver.FindElement(By.Id("ContentPlaceHolder1_ctrlLogin_Login1_Password")).SendKeys(DealerPortal.Config.testPassWord);
             driver.FindElement(By.Id("ContentPlaceHolder1_ctrlLogin_Login1_BtnSubmit")).Click();
-
- 
 
             for (int second = 0; ; second++)  
             {
