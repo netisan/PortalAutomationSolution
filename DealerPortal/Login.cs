@@ -22,6 +22,7 @@ namespace DealerPortalTests
         private static string testUserName = DealerPortal.Config.testUserName;
         private static string testPassWord = DealerPortal.Config.testPassWord;
         private static string auxUserName = DealerPortal.Config.auxUserName;
+        private static string auxEmailAddr = DealerPortal.Config.auxEmailAddr;
 
         [SetUp]
         public void SetupTest()
@@ -56,12 +57,12 @@ namespace DealerPortalTests
         [Test]
         public void LoginLogout()
         {
-            driver.Navigate().GoToUrl(baseURL + "Login.aspx?ReturnUrl=%2fDealerPortal%2f");
-            driver.FindElement(By.Id("ContentPlaceHolder1_ctrlLogin_Login1_UserName")).Clear();
-            driver.FindElement(By.Id("ContentPlaceHolder1_ctrlLogin_Login1_UserName")).SendKeys(testUserName);
-            driver.FindElement(By.Id("ContentPlaceHolder1_ctrlLogin_Login1_Password")).Clear();
-            driver.FindElement(By.Id("ContentPlaceHolder1_ctrlLogin_Login1_Password")).SendKeys(testPassWord);
-            driver.FindElement(By.Id("ContentPlaceHolder1_ctrlLogin_Login1_BtnSubmit")).Click();
+            driver.Navigate().GoToUrl(baseURL + "Login.aspx");
+            driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).Clear();
+            driver.FindElement(By.XPath("//input[contains(@name,'UserName')]")).SendKeys(testUserName);
+            driver.FindElement(By.XPath("//input[contains(@name,'Password')]")).Clear();
+            driver.FindElement(By.XPath("//input[contains(@name,'Password')]")).SendKeys(testPassWord);
+            driver.FindElement(By.XPath("//input[contains(@id,'BtnSubmit')]")).Click();
 
             for (int second = 0; ; second++)
             {
@@ -111,7 +112,7 @@ namespace DealerPortalTests
             }
 
             driver.FindElement(By.Id("ContentPlaceHolder1_ResetPassword1_tbxEmail")).Clear();
-            driver.FindElement(By.Id("ContentPlaceHolder1_ResetPassword1_tbxEmail")).SendKeys(DealerPortal.Config.auxEmailAddr);
+            driver.FindElement(By.Id("ContentPlaceHolder1_ResetPassword1_tbxEmail")).SendKeys(auxEmailAddr);
             driver.FindElement(By.Id("ContentPlaceHolder1_ResetPassword1_btnSearch")).Click();
 
             for (int second = 0; ; second++)
